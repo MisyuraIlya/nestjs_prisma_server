@@ -25,11 +25,12 @@ model User {
 
   orders Order[]
   reviews Review[]
+  favorites Product[]
 
 }
 
 model Product {
-    id Int @id @default(autoincrement())
+  id Int @id @default(autoincrement())
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
@@ -38,11 +39,15 @@ model Product {
   description String
   price Int
   images String[]
+
   orderItems OrderItem[]
   reviews Review[]
 
   category Category? @relation(fields: [categoryId], references: [id])
   categoryId Int? @map("category_id")
+
+  user User? @relation(fields: [userId], references: [id])
+  userId Int? @map("user_id")
 }
 
 model Category {
@@ -51,6 +56,7 @@ model Category {
   updatedAt DateTime @updatedAt @map("updated_at")
 
   name String @unique
+  slug String @unique
 
   products Product[]
 }
