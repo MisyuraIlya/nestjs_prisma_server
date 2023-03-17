@@ -1,5 +1,7 @@
 # dependencies 
-1. npm install @nestjs/typeorm typeorm pg
+1. npm install prisma --save-dev
+2. npx prisma generate
+3. npx prisma db push
 2. npm install class-validator - to validate DTO
 3. npm install class-transformer
 4. npm i @faker-js/faker
